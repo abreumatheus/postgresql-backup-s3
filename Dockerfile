@@ -1,12 +1,9 @@
-FROM alpine:3.18
-LABEL maintainer="ITBM"
+FROM alpine:3.19.1
+LABEL maintainer="Matheus Abreu"
 
 RUN apk update \
 	&& apk upgrade \
-	&& apk add coreutils postgresql15-client aws-cli openssl curl \
-	&& curl -L --insecure https://github.com/odise/go-cron/releases/download/v0.0.7/go-cron-linux.gz | zcat > /usr/local/bin/go-cron \
- 	&& chmod u+x /usr/local/bin/go-cron \
-	&& apk del curl \
+	&& apk add coreutils postgresql16-client aws-cli openssl \
 	&& rm -rf /var/cache/apk/*
 
 ENV POSTGRES_DATABASE **None**
